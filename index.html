@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>SteamBlockly Visual Programming Editor</title>
+	<script src="blockly_compressed.js"></script>
+	<script src="steam_python_blocks.js"></script> <!-- custom block definition file-->
+	<script src="python_compressed.js"></script>
+	<script src="msg/js/en.js"></script>
+
+	<!--Code Generation files --->
+	<script src="generators/python/variable.js"></script>
+  	<script src="generators/python/logics.js"></script>
+  	<script src="generators/python/loop.js"></script>
+  	<script src="generators/python/arithmetic.js"></script>
+  	<script src="generators/python/keywords.js"></script>
+  	<script src="generators/python/comparison.js"></script>
+  	<script src="generators/python/bitwise.js"></script>
+  	<script src="generators/python/function.js"></script>
+  	<script src="generators/python/assignment.js"></script>
+  	<script src="generators/python/membership.js"></script>
+
+  	<!-- custom css files-->
+  	<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	
+	<div id = "table" class="container">
+	    <div class="row">
+	        <h1>SteamBlockly for Python</h1>
+	        <h2>Visual Programming Editor</h2>
+	    </div>
+	    <div class="row">
+		    <div class="col-sm-8">
+		    	<span class="heading" style="color: red;">Block Category </span>
+		    	<span class="heading" style="padding-left: 100px; color: purple;">Workspace</span>
+		        <div id="blocklyDiv" style="height: 516px; width: 100%; "></div>
+		    </div>
+		    <div class="col-sm-4">
+		    	<span class="heading" style="color: green;">Code Generated</span>
+		    	<span class="heading run-box" style="padding-left: 200px;"><a href="javascript:void()" onclick="runCode();" class="run"><i class="fa fa-play"></i> Run</a></span>
+		        <pre id="textarea" style="height: 517px; border: 1px solid #ccc; white-space: pre-wrap;font-family:segoe ui; font-size:0.9em; font-weight:350;padding:0.5em;"></pre>
+		        
+		    </div>
+		    <script type="text/javascript">
+		    	function runCode(){
+		    		//alert('ok');
+		    		var data = document.getElementById("textarea").textContent;
+		    		if (data==="") {
+		    			alert("Please, drag some blocks to the workspace")
+		    		}else{
+		    			/*var data = "<p>This is 'myWindow'</p>";
+						myWindow = window.open("data:text/html," + encodeURIComponent(data),
+						                       "_blank", "width=200,height=100");
+						myWindow.focus();*/
+
+						//var data = "<html><head><title>Title here</title></head><body><p>This is 'myWindow'</p></body></html>";
+						alert(data);
+						/*myWindow=window.open('','','')
+						myWindow.document.write(data)
+						myWindow.focus()*/
+					}
+		    	}
+		    </script>
+	    </div>
+	</div>
+
+	<xml id="toolbox" style="display: none">
+	    <category name="Variable" colour="230">
+	      <block type="variable_string_input"></block>
+	      <block type="variable_str"></block>
+	      <block type="variable_num_input"></block>
+	      <block type="variable_string"></block>
+	      <block type="variable_int"></block>
+	      <block type="variable_float"></block>
+	      <block type="variable_list"></block>
+	      <block type="variable_dict"></block>
+	      <block type="variable_tuple"></block>
+	      <block type="variable_set"></block>
+	      <block type="variable_string1"></block>
+	      <block type="variable_list1"></block>
+	      <block type="variable_tuple1"></block>
+	      <block type="variable_dict1"></block>
+
+	    </category>
+	    <sep></sep>
+	    <category name="Logic" colour="65">
+	      <block type="logic_and"></block>
+	      <block type="logic_or"></block>
+	      <block type="logic_not"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Loop" colour="120">
+	      <block type="loop_if"></block>
+	      <block type="loop_if_else"></block>
+	      <block type="loop_if_elif"></block>
+	      <block type="loop_for"></block>
+	      <block type="loop_for_else"></block>
+	      <block type="loop_while"></block>
+	      <block type="loop_while_else"></block>
+	    </category>
+	    <sep></sep>
+	    
+	    <category name="Arithmetic" colour="290">
+	      <block type="arithmetic_add"></block>
+	      <block type="arithmetic_minus"></block>
+	      <block type="arithmetic_mult"></block>
+	      <block type="arithmetic_div"></block>
+	      <block type="arithmetic_mode"></block>
+	      <block type="arithmetic_floor_div"></block>
+	      <block type="arithmetic_expo"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Comparison" colour="160">
+	      <block type="comparison_greater"></block>
+	      <block type="comparison_less"></block>
+	      <block type="comparison_equal"></block>
+	      <block type="comparison_not_equal"></block>
+	      <block type="comparison_equal_greater"></block>
+	      <block type="comparison_equal_less"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Bitwise" colour="20">
+	      <block type="bitwise_and"></block>
+	      <block type="bitwise_or"></block>
+	      <block type="bitwise_not"></block>
+	      <block type="bitwise_xor"></block>
+	      <block type="bitwise_right_shift"></block>
+	      <block type="bitwise_left_shift"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Assignment" colour="330">
+	      <block type="assignment_equal_equal"></block>
+	      <block type="assignment_equal"></block>
+	      <block type="assignment_equal_plus"></block>
+	      <block type="assignment_equal_minus"></block>
+	      <block type="assignment_equal_mult"></block>
+	      <block type="assignment_equal_div"></block>
+	      <block type="assignment_equal_expo"></block>
+	      <block type="assignment_equal_and"></block>
+	      <block type="assignment_equal_or"></block>
+	      <block type="assignment_equal_ast"></block>
+	      <block type="assignment_equal_right"></block>
+	      <block type="assignment_equal_left"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Membership" colour="270">
+	      <block type="membership_in"></block>
+	      <block type="membership_not_in"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Function" colour="100">
+	      <block type="function_def1"></block>
+	    </category>
+	    <sep></sep>
+	    <category name="Keywords" colour="210">
+	      <block type="keywords_false"></block>
+	      <block type="keywords_len"></block>
+	      <block type="keywords_return"></block>
+	      <block type="keywords_import"></block>
+	      <block type="keywords_global"></block>
+	      <block type="keywords_from"></block>
+	      <block type="keywords_del"></block>
+	      <block type="keywords_remove"></block>
+	      <block type="keywords_pop"></block>
+	      <block type="keywords_true"></block>
+	      <block type="keywords_from1"></block>
+	      <block type="keywords_from2"></block>
+	      <block type="keywords_import1"></block>
+	      <block type="keywords_print"></block>
+	      <block type="keywords_break"></block>
+	      <block type="keywords_continue"></block>
+	      <block type="keywords_range"></block>
+
+
+	    </category>
+	    <!--End of additional scripts-->
+	</xml>
+
+	<script>
+	    var workspace = Blockly.inject('blocklyDiv',
+	      {	toolbox: document.getElementById('toolbox'),
+	  		zoom:
+		        {controls: true,
+		          wheel: true,
+		          startScale: 1.0,
+		          maxScale: 3,
+		          minScale: 0.3,
+		          scaleSpeed: 1.2},
+		    trashcan: true,
+			scrollbars: true,
+			grid:
+		        {spacing: 20,
+		          length: 3,
+		          colour: '#ccc',
+		          snap: true}
+      	});
+
+	    function myUpdateFunction(event) {
+	      Blockly.Python.addReservedWords('code');
+		  var code = Blockly.Python.workspaceToCode(workspace);
+		  document.getElementById("textarea").innerHTML = code;
+		}
+		workspace.addChangeListener(myUpdateFunction);
+
+	</script>
+</body>
+</html>
